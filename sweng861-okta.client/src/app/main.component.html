@@ -1,0 +1,13 @@
+<div class="container">
+  <div *ngIf="!isAuthenticated">
+    <h2>Welcome to the Okta SSO Demo</h2>
+    <p>Please log in to access your account.</p>
+    <button (click)="login()">Login</button>
+  </div>
+
+  <div *ngIf="isAuthenticated">
+    <h2>Hello, {{ userName }}</h2>
+    <p>Email: {{ userEmail }}</p>
+    <button (click)="logout()">Logout</button>
+  </div>
+</div>

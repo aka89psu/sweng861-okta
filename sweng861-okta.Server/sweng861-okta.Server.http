@@ -1,6 +1,0 @@
-@sweng861_okta.Server_HostAddress = http://localhost:5272
-
-GET {{sweng861_okta.Server_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

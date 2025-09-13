@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35506.116 d17.12
+VisualStudioVersion = 17.12.35506.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "sweng861-okta.client", "sweng861-okta.client\sweng861-okta.client.esproj", "{E50FF8E8-9B34-4861-9F6C-DED7DE0BC858}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3153125B-1B2C-46EC-BF9F-6BB8EB0C6A05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sweng861-okta.server", "sweng861-okta.server\sweng861-okta.server.csproj", "{129A0EDA-30EE-4F24-B64E-265685DAD7B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +21,10 @@ Global
 		{E50FF8E8-9B34-4861-9F6C-DED7DE0BC858}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E50FF8E8-9B34-4861-9F6C-DED7DE0BC858}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E50FF8E8-9B34-4861-9F6C-DED7DE0BC858}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{129A0EDA-30EE-4F24-B64E-265685DAD7B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{129A0EDA-30EE-4F24-B64E-265685DAD7B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{129A0EDA-30EE-4F24-B64E-265685DAD7B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{129A0EDA-30EE-4F24-B64E-265685DAD7B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

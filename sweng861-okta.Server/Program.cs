@@ -1,5 +1,9 @@
 
-namespace sweng861_okta.Server
+using AspNetCoreRateLimit;
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
+
+namespace unit3.Server
 {
     public class Program
     {
@@ -7,11 +11,17 @@ namespace sweng861_okta.Server
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddAuthentication("Bearer").AddJwtBearer("Bearer", options =>
-            {
-                options.Authority = "https://trial-7039807.okta.com/oauth2/default";
-                options.Audience = "api://default";
-            });
+            var settings = builder.Configuration.GetRequiredSection("Settings").Get<Settings>();
+
+            var apiDatabase = settings?.ApiDatabase;
+            var apiDatabaseType = settings?.ApiDatabaseType;
+
+            builder.Services.AddSingleton(new Settings { ApiDatabase = apiDatabase, ApiDatabaseType = apiDatabaseType });
+
+            builder.Services.AddControllers();
+            
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
 
             builder.Services.AddCors(options =>
             {
@@ -24,19 +34,11 @@ namespace sweng861_okta.Server
                     });
             });
 
-            builder.Services.AddAuthorization();
-
-            builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
-
             var app = builder.Build();
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -45,13 +47,13 @@ namespace sweng861_okta.Server
 
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+            app.UseRouting();
 
             app.UseCors("CorsPolicy");
 
-            app.MapControllers();
+            app.UseAuthorization();
 
-            app.MapFallbackToFile("/index.html");
+            app.UseEndpoints(endpoints => endpoints.MapControllers());
 
             app.Run();
         }
